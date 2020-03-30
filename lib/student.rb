@@ -37,9 +37,9 @@ sql = <<-SQL
     SQL
 
     DB[:conn].execute(sql, name).map do |row|
-      s = self.new_from_db(row)
-    end
-    s
+      self.new_from_db(row)
+    end.first
+
   end
   
   def save
@@ -145,3 +145,5 @@ end
     DB[:conn].execute(sql)
   end
 end
+
+# puts Student.new_from_db([1,'Pat',12])
